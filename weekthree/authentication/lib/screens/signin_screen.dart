@@ -1,6 +1,8 @@
 // ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
+import 'package:project1/screens/login_or_register.dart';
+import 'package:project1/screens/login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -37,11 +39,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       fontSize: 30,
                     ),
                     "Create Account"),
+                const SizedBox(
+                  height: 10,
+                ),
                 //second text
                 const Text(style: TextStyle(), "Become new user"),
 
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
 
                 //form
@@ -51,7 +56,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   children: [
                     inputs(
                       label: "Username",
-                      prefixIcon: const Icon(Icons.verified_user),
+                      prefixIcon: const Icon(Icons.person),
                       isVisible: false,
                     ),
                     const SizedBox(
@@ -84,7 +89,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     inputs(
                         label: "Verify password",
                         isVisible: isPrivate,
-                        prefixIcon: const Icon(Icons.confirmation_num),
+                        prefixIcon: const Icon(Icons.lock),
                         controller: passController,
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -151,11 +156,68 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 //iconbuttons
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                        child: Image.asset(height: 20, "assets/google2.png")),
-                    Expanded(
-                        child: Image.asset(height: 20, "assets/apple1.png"))
+                    Container(
+                      width: 150,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 122, 121, 121),
+                              width: 2),
+                          borderRadius: BorderRadius.circular(8.0)),
+                      child: Expanded(
+                          child: Image.asset(height: 15, "assets/google2.png")),
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      width: 150,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 122, 121, 121),
+                              width: 2),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Expanded(
+                          child: Image.asset(height: 15, "assets/apple1.png")),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("By signing up you agree to the"),
+                        TextButton(
+                            onPressed: () {},
+                            child: const Text(
+                                style: TextStyle(color: Colors.blue),
+                                "Terms of service"))
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Already have an account?"),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginScreen()));
+                            },
+                            child: const Text(
+                                style: TextStyle(color: Colors.blue), "Login"))
+                      ],
+                    )
                   ],
                 )
               ],
@@ -188,7 +250,7 @@ Widget inputs(
         suffixIcon: suffixIcon,
         hintText: label ?? "",
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.black))),
   );
 }

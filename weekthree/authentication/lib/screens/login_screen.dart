@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/screens/signin_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -58,24 +59,45 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 5,
               ),
               SizedBox(
-                width: 320,
-                child: buildButton(onPresssed: () {
-                  print(emailController.text);
-                  print(passController.text);
-                  Colors.blue;
-                }),
+                width: 350,
+                height: 50,
+                child: GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(8)),
+                    child: const Center(
+                      child: Text(
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          "Sign in"),
+                    ),
+                  ),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("Already have an account?"),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const RegistrationScreen()));
+                      },
                       child: const Text(
                         "Login",
                         style: TextStyle(color: Colors.blue),
                       ))
                 ],
+              ),
+              const SizedBox(
+                height: 15,
               ),
               const Row(
                 children: [
@@ -97,13 +119,42 @@ class _LoginScreenState extends State<LoginScreen> {
                   ))
                 ],
               ),
+              const SizedBox(
+                height: 28,
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  buildButton(
-                    label: "Facebook",
+                  SizedBox(
+                    width: 160,
+                    height: 40,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color.fromARGB(255, 121, 121, 121),
+                                width: 2),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Expanded(
+                            child:
+                                Image.asset(height: 20, "assets/google2.png"))),
                   ),
-                  buildButton(
-                    label: "Google",
+                  const SizedBox(
+                    width: 30,
+                  ),
+                  SizedBox(
+                    width: 160,
+                    height: 40,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 121, 121, 121),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Expanded(
+                            child:
+                                Image.asset(height: 10, "assets/apple1.png"))),
                   )
                 ],
               )
