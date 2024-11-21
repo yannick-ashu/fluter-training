@@ -13,6 +13,7 @@ class Onboardscreen extends StatefulWidget {
 
 class MyWidgetState extends State<Onboardscreen> {
   final PageController controller = PageController();
+  int pageIndex = 0;
 
   @override
   void dispose() {
@@ -22,36 +23,49 @@ class MyWidgetState extends State<Onboardscreen> {
 
   @override
   Widget build(BuildContext context) => Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+            color: Colors.white,
             image: DecorationImage(
-                image: AssetImage("assets/bot.jpeg"), fit: BoxFit.cover)),
+                image: pageIndex == 1
+                    ? const AssetImage("assets/pickupagent.png")
+                    : pageIndex == 2
+                    ? const AssetImage("assets/pickupagent.png")
+                    :
+                    
+                     const AssetImage("assets/bot.jpeg"),
+                fit: BoxFit.cover)),
 
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Stack(children: [
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.blue, Colors.green],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(200),
-                      topRight: Radius.circular(200)),
-                  color: Colors.green,
+          body: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Stack(children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.green],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(200),
+                        topRight: Radius.circular(200)),
+                    color: Colors.green,
+                  ),
+                  height: 400,
+                  width: double.infinity,
                 ),
-                height: 400,
-                width: double.infinity,
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              Container(
+                padding: const EdgeInsets.only(bottom: 30),
                 child: PageView(
                   controller: controller,
+                  onPageChanged: (value) {
+                    setState(() {
+                      pageIndex = value;
+                    });
+                  },
                   children: [
                     Container(
                       alignment: Alignment.bottomCenter,
@@ -323,8 +337,8 @@ class MyWidgetState extends State<Onboardscreen> {
                   ],
                 ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
 
         //   bottomSheet: Container(
