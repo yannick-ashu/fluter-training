@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:ecoai/screens/onboarding1/onboardscreen.dart';
+import 'package:ecoai/features/onboarding/presentation/pages/onboardscreen.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {

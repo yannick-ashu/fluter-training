@@ -1,3 +1,4 @@
+import 'package:ecoai/features/authentication/presentation/pages/signup/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class Authentication extends StatefulWidget {
@@ -33,13 +34,18 @@ class _MyWidgetState extends State<Authentication> {
                         borderRadius: BorderRadius.circular(16),
                         color: Colors.blue,
                       ),
-                      child: const Center(
-                        child: Text(
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                            "Signup"),
+                      child: GestureDetector(
+                        onTap: () => {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp()))
+                        },
+                        child: const Center(
+                          child: Text(
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
+                              "Signup"),
+                        ),
                       ),
                     ),
                   ),

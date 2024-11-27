@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:ecoai/screens/onboarding1/onboarding2.dart';
+import 'package:ecoai/features/onboarding/presentation/pages/onboarding2.dart';
 import 'package:flutter/material.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
